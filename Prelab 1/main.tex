@@ -1,0 +1,80 @@
+\input{preamble}
+\input{format}
+\input{commands}
+
+\begin{document}
+
+\begin{Large}
+    \textsf{\textbf{Lab 1 Prelab}}
+    
+    
+\end{Large}
+
+\vspace{1ex}
+
+\textsf{\textbf{Student:}} \text{Thomas Newman}, \href{mailto:tnewman057@gmail.com}{\texttt{tnewman057@gmail.com}}\\
+\textsf{\textbf{Lecturer:}} \text{Houshang Karimi}, \href{mailto:hkarimi6@yorku.ca}{\texttt{hkarimi6@yorku.ca}}
+
+
+\vspace{2ex}
+
+\begin{problem}{Voltage Division}{problem-label}
+Find the voltage $V_\text{out}$ in Fig. L1.1, where $R_1$ = 4.7 K:, $R_2$ = 6.8 K$\Omega$. If a load with
+resistance of 5.6K$\Omega$ is attached to the output terminal, what is the voltage of $V_\text{out}$?
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.46\textwidth]{fig1.png}
+	\caption{Circuit for Problem 1.}
+	\label{fig:cir_res3}
+\end{figure}
+
+\[R_\text{eq} = (\frac{1}{R_2} + \frac{1}{5.6k\Omega})^-1 = (\frac{1}{6.8k\Omega} + \frac{1}{5.6k\Omega})^-1 = 3.071\text{ k$\Omega$}\]
+\[V_\text{out} = V_\text{in}\frac{R_\text{eq}}{R_1 + R_\text{eq}} = V_\text{in}\frac{3.071\text{ k $\Omega$}}{4.7 \text{ k $\Omega$} + 3.071 \text{ k $\Omega$}} = 0.3952 V_\text{in}\]
+
+\end{problem}
+
+
+\begin{problem}{Circuit Analysis}{problem-label-2}
+Find the voltage across each resistor ($V_\text{RX}$) and the current in each resistor ($I_\text{RX}$) in Fig
+L1.2. Assume the following values for the resistors: $R_1$ = 1 K$\Omega$, $R_2$ = 4.7 K$\Omega$, $R_3$ = 10
+K$\Omega$, $R_4$ = 4.7 K$\Omega$, $R_5$= 1 K$\Omega$, $V_1$= 5V, $V_2$= 7V.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.46\textwidth]{fig2.png}
+	\caption{Circuit for Problem 2.}
+	\label{fig:cir_res3}
+\end{figure}
+
+    \[\text{KCL top left: }I_1 = I_3 + I_2\,\,\,\,\,\,\, I_3 = I_1-I_2\]
+    \[\text{KCL top right: }I_4 = I_5 + I_2\]
+    \[\text{KVL left mesh: } 5-1000I_1 - 10000I_3 = 0\]
+    \[\text{KVL right mesh: } -7+4700I_4 +1000I_5 = 0\]
+    \[\text{KVL outer loop: } -2 -1000I_1-47000I_2 + 1000I_5 = 0\]
+    \[\text{Solve for $I_1$: }5-1000I_1 - 10000(I_1 - I_2) = 0\]
+    \[5-1000I_1 - 10000I_1 + 10000I_2 = 0\]
+    \[5 = 11000I_1 - 10000I_2\]
+    \[I_1 = \frac{5+10000I_2}{11000}\]
+    \[\text{Solve for $I_5$: }-7 + 4700(I_5 + I_2) + 1000I_5 = 0\]
+    \[-7+5700I_5 + 4700I_2 = 0\]
+    \[I_5 = \frac{7-4700I_2}{5700}\]
+    \[\text{Using KVL outer loop, solve for $I_2$: } -2-1000(\frac{5+10000I_2}{11000})-4700I_2 + 1000(\frac{7-4700I_2}{5700})\]
+    \[-2=(\frac{5+10000I_2}{11})+4700I_2-(\frac{7-4700I_2}{5.7})\]
+    \[-2 = \frac{5}{11} + \frac{10000I_2}{11} + 4700I_2 - \frac{7}{5.7}-\frac{4700I_2}{5.7}\]
+    \[-1.226 = 4700I_@ + 909.09I_2 - 824.56I_2 = 4784.53I_2\]
+    \[I_2 = -0.256\text{ mA}\]
+    \[I_1 = \frac{5+10000(-0.256\text{ mA}}{11000} = 22.15 \text{ mA}\]
+    \[I_5 = \frac{7-4700(-0.256\text{ mA})}{5700} = 1.43 \text{ mA}\]
+    \[I_4 = I_5 + I_2 = 1.43 \text{ mA} + (-0.256 \text{ mA}) = 1.18 \text{ mA}\]
+    \[I_3 = I_1-I_2 = 0.2215 \text{ mA} - (-0.256 \text{ mA}) = 0.477 \text{ mA}\]
+    \[V_1 = I_1R_1 = 0.2215 \text{ mA}(1000\Omega) = 0.2215 \text{ V}\]
+    \[V_2 = I_2R_2 = -0.256 \text{ mA}(4700\Omega) = -1.203 \text{ V}\]
+    \[V_3 = I_3R_3 = 0.477 \text{ mA}(10000\Omega) = 4.77 \text{ V}\]
+    \[V_4 = I_4R_4 = 1.18 \text{ mA}(4700\Omega) = 5.55 \text{ V}\]
+    \[V_5 = I_5R_5 = 1.43 \text{ mA}(1000\Omega) = 1.43 \text{ V}\]
+    \[\therefore \text{$V_1$ = 0.2215 V, $V_2$ = -1.203 V, $V_3$ = 4.77 V, $V_4$ = 5.55 V, $V_5$ = 1.43 V}\]
+    \[\text{$I_1$ = 0.2215 mA, $I_2$ = -0.256 mA, $I_3$ = 0.477 mA, $I_4$ = 1.18mA, $I_5$ = 1.43 mA}\]
+\end{problem}
+
+
+
+\end{document}
